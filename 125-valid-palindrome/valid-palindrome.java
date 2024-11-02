@@ -1,31 +1,25 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        if (s.length() <= 1) return true;
         int p1 = 0;
         int p2 = s.length()-1;
-
         while (p1 < p2) {
-            int p1Char = convertToAlphanumeric(s.charAt(p1));
-            int p2Char = convertToAlphanumeric(s.charAt(p2));
-
-            if (p1Char == -1) {
+            while (alphaNumeric(s.charAt(p1)) == -1 && p1 < p2) {
                 p1++;
-            } else if (p2Char == -1) {
-                p2--;
-            } else if (p1Char != p2Char) {
-                return false;
-            } else {
-                p1++;
+            }
+            while (alphaNumeric(s.charAt(p2)) == -1 && p1 < p2) {
                 p2--;
             }
+            if (alphaNumeric(s.charAt(p1++)) != alphaNumeric(s.charAt(p2--))) 
+                return false;
         }
         return true;
     }
-    
-    private int convertToAlphanumeric(char c) {
-        if (c >= '0' && c <= '9' || c >= 'a' && c <= 'z') {
+
+    private int alphaNumeric (char c) {
+        if (c >= 'a' && c <= 'z' || c >= '0' && c <= '9') {
             return c;
-        } else if (c >= 'A' && c <= 'Z') {
+        }
+        if (c >= 'A' && c <= 'Z') {
             return c - 'A' + 'a';
         }
         return -1;
