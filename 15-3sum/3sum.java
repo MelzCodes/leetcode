@@ -4,13 +4,16 @@ class Solution {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
             if (i > 0 && nums[i] == nums[i-1]) continue;
+            int target = -nums[i];
             int p1 = i+1;
             int p2 = nums.length-1;
             while (p1 < p2) {
-                int total = nums[i] + nums[p1] + nums[p2];
-                if (total < 0) p1++;
-                else if (total > 0) p2--;
-                else {
+                int total = nums[p1] + nums[p2];
+                if (total > target) {
+                    p2--;
+                } else if (total < target) {
+                    p1++;
+                } else {
                     ans.add(List.of(nums[i], nums[p1], nums[p2]));
                     p1++;
                     p2--;
