@@ -3,7 +3,6 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
         for (String str : tokens) {
             if (!isOperator(str)) {
-                System.out.println(str);
                 stack.push(Integer.parseInt(str));
             } else {
                 stack.push(performOperation(stack, str.charAt(0)));
