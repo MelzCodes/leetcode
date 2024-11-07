@@ -1,15 +1,15 @@
 class MinStack {
-    private List<int[]> list;
 
+    List<Pair<Integer, Integer>> list;
     public MinStack() {
         list = new ArrayList<>();
     }
     
     public void push(int val) {
-        int top[] = list.isEmpty() ? new int[]{val, val} : list.get(list.size()-1);
-        int min = top[1];
+        Pair<Integer, Integer> top = list.isEmpty() ? new Pair<>(val, val) : list.get(list.size()-1);
+        int min = top.getValue();
         if (val < min) min = val;
-        list.add(new int[]{val, min});
+        list.add(new Pair<>(val, min));
     }
     
     public void pop() {
@@ -17,11 +17,11 @@ class MinStack {
     }
     
     public int top() {
-        return list.get(list.size()-1)[0];
+        return list.get(list.size()-1).getKey();
     }
     
     public int getMin() {
-        return list.get(list.size()-1)[1];
+        return list.get(list.size()-1).getValue();
     }
 }
 
