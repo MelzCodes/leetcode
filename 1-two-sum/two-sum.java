@@ -3,11 +3,11 @@ class Solution {
         HashMap<Integer, Integer> hashy = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int comp = target - nums[i];
-            if (hashy.containsKey(comp)) {
-                return new int[]{hashy.get(comp), i};
-            }
-            hashy.put(nums[i], i);
-        }
+            if (hashy.containsKey(nums[i])) {
+                return new int[] {hashy.get(nums[i]), i};
+            } 
+            hashy.put(comp, i);
+        }   
         return null;
     }
 }
