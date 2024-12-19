@@ -1,16 +1,17 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        int p1 = 0;
-        int p2 = s.length()-1;
-        while (p1 < p2) {
-            while (alphaNumeric(s.charAt(p1)) == -1 && p1 < p2) {
-                p1++;
+        int l = 0;
+        int r = s.length()-1;
+        while (l < r) {
+            while (alphaNumeric(s.charAt(l)) == -1 && l < r) {
+                l++;
+            } 
+            while (alphaNumeric(s.charAt(r)) == -1 && l < r) {
+                r--;
             }
-            while (alphaNumeric(s.charAt(p2)) == -1 && p1 < p2) {
-                p2--;
-            }
-            if (alphaNumeric(s.charAt(p1++)) != alphaNumeric(s.charAt(p2--))) 
+            if (alphaNumeric(s.charAt(l++)) != alphaNumeric(s.charAt(r--))) {
                 return false;
+            }
         }
         return true;
     }
