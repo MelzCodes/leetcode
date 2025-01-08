@@ -5,7 +5,6 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    path = []
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         path = []
         def dfs(root):
