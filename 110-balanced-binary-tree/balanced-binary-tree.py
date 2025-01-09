@@ -8,6 +8,9 @@ class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         ans = True
         def dfs(root):
+            nonlocal ans
+            if not ans:
+                return [False, 0]
             if not root:
                 return [True, 0]
 
@@ -15,7 +18,6 @@ class Solution:
             right = dfs(root.right)
 
             if not left[0] or not right[0] or abs(left[1] - right[1]) > 1:
-                nonlocal ans
                 ans = False
                 return [False, max(left[1], right[1]) + 1]
             else:
